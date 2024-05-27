@@ -11,7 +11,7 @@ export const Login = () => {
     const [password, setPassword] = useState('');
     const URL = 'login'
 
-    function handleSubmit(){
+    function handleSubmit() {
         fetch('https://urban-spoon-q7vv7x4wvvxqc9xrv-3001.app.github.dev/login', {
           method: 'POST',
           headers: {
@@ -33,7 +33,7 @@ export const Login = () => {
             // Check if a specific response is returned from the server
             if (data && data.success === true) {
                 sessionStorage.setItem('jwtToken', data.access_token);
-                // window.location.href = "/private"; // Redirect to private page
+                window.location.href = "/private"; // Redirect to private page
             } else {
                 console.log(data)
                 throw new Error(data[0].error); // Throw error if unexpected response

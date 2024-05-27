@@ -98,7 +98,8 @@ def authenticate_user():
 @jwt_required()
 def protected():
     current_user_id = get_jwt_identity()
-    return jsonify(logged_in_as=current_user_id), 200
+    user = User.query.get(current_user_id)
+    return jsonify(logged_in_as=current_user_id, user_info=user.serialize()), 200
    
 @app.route('/')
 def sitemap():
